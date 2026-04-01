@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proto-AGI Stack — Public Architecture Overview</title>
+  <style>
+    :root{
+      --bg:#09101c; --panel:#10192d; --panel2:#0d1527; --text:#eef3ff; --muted:#9cb0d9;
+      --line:rgba(255,255,255,.08); --accent:#8b5cf6; --accent2:#22d3ee; --good:#22c55e; --warn:#f59e0b;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif; color:var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(139,92,246,.18), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(34,211,238,.14), transparent 30%),
+        linear-gradient(180deg,#09101c,#0a1020 60%,#080d18);
+    }
+    .wrap{max-width:1480px;margin:0 auto;padding:24px}
+    .hero,.card{
+      background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015)),var(--panel);
+      border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow);
+    }
+    .hero{padding:30px;margin-bottom:18px}
+    h1{margin:0 0 10px;font-size:42px;letter-spacing:-.04em}
+    h2{margin:0 0 8px;font-size:24px;letter-spacing:-.03em}
+    .sub{color:var(--muted);line-height:1.6;max-width:1100px}
+    .label{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
+    .big{font-size:30px;font-weight:800;letter-spacing:-.03em}
+    .muted{color:var(--muted)}
+    .pillrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .pill{border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:var(--muted);font-size:12px;background:rgba(255,255,255,.02)}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px}
+    .card{padding:18px}
+    .stack{display:grid;gap:12px}
+    .layer{
+      border:1px solid var(--line); border-radius:18px; padding:16px;
+      background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01)),var(--panel2);
+    }
+    .name{font-size:18px;font-weight:800;letter-spacing:-.02em}
+    .desc{margin-top:6px;color:var(--muted);line-height:1.5}
+    ul{margin:8px 0 0 18px;padding:0}
+    li{margin:5px 0;color:var(--muted)}
+    table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--panel2)}
+    th,td{padding:14px;vertical-align:top;border-bottom:1px solid var(--line);text-align:left}
+    th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);background:rgba(255,255,255,.03)}
+    tr:last-child td{border-bottom:none}
+    pre{
+      margin:0; padding:16px; border:1px solid var(--line); border-radius:18px;
+      background:var(--panel2); overflow:auto; color:#eaf2ff; line-height:1.5;
+    }
+    code{
+      background:rgba(255,255,255,.05); border:1px solid var(--line);
+      padding:2px 6px; border-radius:8px; color:#fff;
+    }
+    .footer{margin-top:18px}
+    @media (max-width:1100px){
+      .grid,.grid3{grid-template-columns:1fr}
+      h1{font-size:32px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="label">Public-Facing Architecture Overview</div>
+      <h1>Proto-AGI Stack — Persistent, Goal-Driven Intelligence Architecture</h1>
+      <div class="sub">
+        This document outlines a practical path from a capable local assistant stack to a <strong>proto-AGI architecture</strong>:
+        a persistent system that can observe, remember, plan, act, evaluate, and improve across time. The goal is not to make inflated claims,
+        but to define a real engineering stack for building a stronger, more autonomous intelligence system from existing components such as
+        local controllers, ARC-style memory/receipts, deterministic runtimes, and simulation-backed world modeling.
+      </div>
+      <div class="pillrow">
+        <div class="pill">Persistent Agent Loop</div>
+        <div class="pill">ARC Memory + Receipts</div>
+        <div class="pill">Goal Engine</div>
+        <div class="pill">Planner</div>
+        <div class="pill">Tool Layer</div>
+        <div class="pill">Learning / Evaluation</div>
+        <div class="pill">World Model</div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="label">Core Position</div>
+        <div class="big">A system, not a single model</div>
+        <div class="muted" style="margin-top:8px">
+          Proto-AGI is not just a chatbot or router. It is an integrated stack that combines memory, reasoning,
+          goal management, planning, tool use, feedback, and persistence into one continuous loop.
+        </div>
+      </div>
+      <div class="card">
+        <div class="label">Practical Goal</div>
+        <div class="big">From assistant → agent</div>
+        <div class="muted" style="margin-top:8px">
+          The target is a system that can take a high-level goal, decompose it, execute across multiple steps,
+          detect failures, revise its plan, and improve over time without full manual steering.
+        </div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-bottom:18px">
+      <div class="label">The Complete Proto-AGI Loop</div>
+      <pre>observe → update world model → choose goal → plan → act → evaluate → learn → repeat</pre>
+    </section>
+
+    <section class="card" style="margin-bottom:18px">
+      <div class="label">Architecture Stack</div>
+      <div class="stack">
+        <div class="layer">
+          <div class="name">1. Perception Layer</div>
+          <div class="desc">Handles incoming text, code, structured data, files, and later multimodal signals. Converts raw inputs into usable state updates.</div>
+        </div>
+        <div class="layer">
+          <div class="name">2. World Model</div>
+          <div class="desc">Maintains structured understanding of projects, tools, environment state, active branches, known facts, and causal relationships.</div>
+        </div>
+        <div class="layer">
+          <div class="name">3. ARC Memory + Receipts</div>
+          <div class="desc">Stores episodic history, semantic facts, procedural know-how, and strategic patterns. Every action emits provenance receipts.</div>
+        </div>
+        <div class="layer">
+          <div class="name">4. Goal Engine</div>
+          <div class="desc">Creates, prioritizes, decomposes, and tracks goals. Supports user-provided goals and system-generated subgoals.</div>
+        </div>
+        <div class="layer">
+          <div class="name">5. Planner</div>
+          <div class="desc">Expands goals into action graphs, estimates cost and likelihood, branches when needed, and revises plans when outcomes change.</div>
+        </div>
+        <div class="layer">
+          <div class="name">6. Action / Tool Layer</div>
+          <div class="desc">Executes shell commands, scripts, build pipelines, file operations, API calls, and future wrapped tools through controlled interfaces.</div>
+        </div>
+        <div class="layer">
+          <div class="name">7. Evaluation Layer</div>
+          <div class="desc">Measures whether actions helped the current goal, detects wasted work, classifies failures, and captures what should be remembered.</div>
+        </div>
+        <div class="layer">
+          <div class="name">8. Learning Layer</div>
+          <div class="desc">Promotes repeated success patterns into reusable procedures, adjusts strategy weights, and improves future planning and tool selection.</div>
+        </div>
+        <div class="layer">
+          <div class="name">9. Persistent Agent Loop</div>
+          <div class="desc">The always-running process that keeps the whole stack alive across time instead of resetting on every prompt.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid3">
+      <div class="card">
+        <div class="label">What Existing Local Assistant Stacks Already Cover</div>
+        <ul>
+          <li>Prompt handling</li>
+          <li>Command routing</li>
+          <li>Model/tool selection</li>
+          <li>Fallback layers</li>
+          <li>Basic script/code generation</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="label">What Must Be Added For Proto-AGI</div>
+        <ul>
+          <li>Persistent goal state</li>
+          <li>World-model updates</li>
+          <li>Autonomous planning across steps</li>
+          <li>Structured memory beyond logs</li>
+          <li>Closed-loop evaluation and learning</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="label">What Should Wait Until Later</div>
+        <ul>
+          <li>Consciousness claims</li>
+          <li>Universal autonomy</li>
+          <li>Full world simulation as the core engine</li>
+          <li>Self-rewriting everything</li>
+          <li>Replacing all human oversight</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card" style="margin-bottom:18px">
+      <div class="label">Operational Memory Model</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Memory Type</th>
+            <th>Purpose</th>
+            <th>Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Episodic</strong></td>
+            <td>What happened</td>
+            <td>Task failed, branch succeeded, build passed, export broke</td>
+          </tr>
+          <tr>
+            <td><strong>Semantic</strong></td>
+            <td>What is true</td>
+            <td>Repo layout, tool capabilities, environment facts, API schemas</td>
+          </tr>
+          <tr>
+            <td><strong>Procedural</strong></td>
+            <td>How to do something</td>
+            <td>Build sequence, deployment procedure, fix pattern for repeated error</td>
+          </tr>
+          <tr>
+            <td><strong>Strategic</strong></td>
+            <td>What tends to work</td>
+            <td>Which planner works best, which tool path is reliable, which branching mode wastes time</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="label">Minimum Persistent Loop</div>
+        <pre>while alive:
+  observe()
+  update_world_model()
+  select_goal()
+  plan_steps()
+  execute_next_action()
+  evaluate_result()
+  write_receipt()
+  update_memory()
+  repeat()</pre>
+      </div>
+      <div class="card">
+        <div class="label">Goal Object Example</div>
+        <pre>{
+  "goal_id": "ship_demo",
+  "priority": 0.91,
+  "source": "user",
+  "status": "active",
+  "subgoals": [
+    "inspect_repo",
+    "build_artifact",
+    "validate_output",
+    "export_package"
+  ],
+  "success_metric": "artifact builds and validates"
+}</pre>
+      </div>
+    </section>
+
+    <section class="card" style="margin-bottom:18px">
+      <div class="label">Suggested Build Order</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>What To Build</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1</strong></td>
+            <td>Persistent loop daemon</td>
+            <td>Turns the system from prompt-response into continuous intelligence</td>
+          </tr>
+          <tr>
+            <td><strong>2</strong></td>
+            <td>Goal engine + goal table</td>
+            <td>Creates real agency structure instead of pure user-driven reactions</td>
+          </tr>
+          <tr>
+            <td><strong>3</strong></td>
+            <td>Planner module</td>
+            <td>Converts goals into structured action graphs</td>
+          </tr>
+          <tr>
+            <td><strong>4</strong></td>
+            <td>Tool receipt wrappers</td>
+            <td>Makes every action traceable, evaluable, and reusable</td>
+          </tr>
+          <tr>
+            <td><strong>5</strong></td>
+            <td>Evaluation / learning layer</td>
+            <td>Allows the system to improve instead of repeating failures forever</td>
+          </tr>
+          <tr>
+            <td><strong>6</strong></td>
+            <td>World-model integration</td>
+            <td>Supports stronger planning and causal reasoning across time</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="label">Where Simulation Fits</div>
+        <div class="muted">
+          Deterministic runtimes, seed-based systems, and simulation environments are valuable as <strong>world-model and testing modules</strong>,
+          but they should not be the first definition of the agent itself. They are best used as sandboxes for policy testing,
+          scenario evaluation, and controlled environment learning.
+        </div>
+      </div>
+      <div class="card">
+        <div class="label">Where Turbo Execution Fits</div>
+        <div class="muted">
+          Task normalization, branch-aware execution, ARC receipts, and resolved-output jumping make the system dramatically more efficient.
+          They do not replace intelligence, but they do create a stronger substrate for a persistent agent loop.
+        </div>
+      </div>
+    </section>
+
+    <section class="card footer">
+      <div class="label">Bottom Line</div>
+      <div class="big" style="font-size:26px">Proto-AGI starts when the system can pursue goals across time, not just answer prompts.</div>
+      <div class="muted" style="margin-top:10px">
+        A serious proto-AGI stack is a <strong>persistent, memory-backed, goal-driven, tool-using, self-evaluating system</strong>.
+        The practical next step is to connect an assistant/controller layer, ARC-style memory/receipts, a planner, and a continuous loop into one operating intelligence.
+      </div>
+    </section>
+  </div>
+</body>
+</html>
