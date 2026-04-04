@@ -3,7 +3,7 @@
 
 > A practical architecture for moving from a local assistant/controller toward a persistent, memory-backed, tool-using proto-AGI loop.
 
-![Status](https://img.shields.io/badge/status-architecture%20spec%20%2B%20active%20implementation-8b5cf6)
+![Status](https://img.shields.io/badge/status-architecture%20spec-8b5cf6)
 ![Focus](https://img.shields.io/badge/focus-proto--agi%20stack-22d3ee)
 ![Runtime](https://img.shields.io/badge/runtime-persistent%20agent%20loop-22c55e)
 
@@ -30,24 +30,6 @@ The stack is designed to connect:
 
 The goal is not to make inflated AGI claims.  
 The goal is to define the shortest real path from a capable assistant stack to a serious **proto-AGI system**.
-
-### Current implementation path
-
-This repository is the **architecture/spec repo** for that direction.
-
-The main public implementation and testing vehicle for this architecture is:
-
-- **arc-lucifer-cleanroom-runtime**: https://github.com/GareBear99/arc-lucifer-cleanroom-runtime
-
-That runtime repo is being used to test and harden the practical substrate for this stack, including:
-
-- persistent directives and runtime flow
-- memory, archive, and receipt behavior
-- validation and verifier surfaces
-- self-improvement / repair scaffolding
-- optional adapter contracts for future perception / robotics layers
-
-So this repo defines **what is being built**, while the cleanroom runtime repo is where the architecture is being turned into a real working substrate and testbed.
 
 ---
 
@@ -78,7 +60,8 @@ Includes:
 - file inspection
 - future multimodal inputs
 
-**Implementation note:** perception should remain **optional and modular**. The base runtime should not require cameras, robotics, audio, or multimodal dependencies unless those adapters are explicitly enabled.
+This layer should remain **modular**.
+The long-run stack may use vision, audio, robotics, simulation telemetry, or other inputs, but the architecture should not require them just to function.
 
 ---
 
@@ -115,8 +98,6 @@ Every action should emit:
 - branch/session lineage
 - confidence / trust
 
-**Implementation note:** the current runtime work is explicitly moving toward stronger archive behavior, branch-aware lineage, and receipt-backed runtime memory as the real substrate for future autonomous loops.
-
 ---
 
 ## 4. Goal Engine
@@ -141,8 +122,6 @@ Planner responsibilities:
 - choose tool path
 - branch when useful
 - revise plans after failure
-
-**Implementation note:** in the runtime direction, the model core should act as a **planner/executive over structured state**, not as a raw low-level control loop.
 
 ---
 
@@ -183,8 +162,6 @@ The stack should update itself over time by:
 This is not “magic self-rewrite.”  
 It is structured improvement through memory and evaluation.
 
-**Implementation note:** learning should be promoted through verified candidate policies, receipts, replay, and bounded improvement paths rather than uncontrolled self-modification.
-
 ---
 
 ## 9. Persistent Agent Loop
@@ -221,7 +198,6 @@ A practical stack can be assembled from components like:
 - **Tool execution layer** → shell / API / file / workflow control
 - **Deterministic runtime / turbo execution layer** → optional performance substrate
 - **Simulation/world-model sandbox** → optional policy testing + controlled learning
-- **Optional perception / embodiment adapters** → attachable vision, audio, robotics, or desktop-control layers when enabled
 
 ---
 
@@ -252,6 +228,122 @@ It should **not** be mistaken for AGI by itself.
 
 ---
 
+## What the Synth is for
+
+The Synth direction is the long-run attempt to give the stack a **real execution substrate**, not just a chatbot loop.
+
+In the ecosystem, **Synth** is the autonomous synthesizer/program layer that can:
+
+- interpret directives
+- build or print structured outputs
+- operate inside a persistent synthetic environment
+- route work through a geometry- and state-aware grid runtime
+- eventually act as the execution engine for the wider ARC / Proto-AGI doctrine
+
+At the smallest scale, Synth can be thought of as a bounded autonomous program/entity that accepts directives and executes them within a controlled system.
+At the largest scale, it becomes the direction referred to as the:
+
+**Virtual Simulated Physics Capacity-Weighted Engine + Wetware Communications Grid**
+
+That longer-term Synth goal is not just “an AI character” or “a game engine.”
+It is a proposed runtime where:
+
+- simulated space is executable space
+- geometry becomes routing and structure
+- persistent entities can act within a deterministic rule system
+- ARC memory/receipts can be grounded in a world-like runtime
+- future autonomous systems can be tested in something closer to a lawful environment than a plain chat session
+
+In short:
+
+> Proto-AGI defines the operating intelligence loop. Synth defines the long-run world/runtime that the loop can inhabit, execute through, and eventually be stress-tested inside.
+
+---
+
+## Current Implementation Path
+
+This repository is the architecture/specification layer for the wider direction.
+It is **not** the single finished implementation repo.
+
+The current implementation path is spread across a staged ecosystem:
+
+| Repository | Current role | Long-run role |
+|---|---|---|
+| [ARC-Core](https://github.com/GareBear99/ARC-Core) | Deterministic intake / event-memory kernel | Canonical event-memory and proposal root |
+| [arc-lucifer-cleanroom-runtime](https://github.com/GareBear99/arc-lucifer-cleanroom-runtime) | Runtime testbed and hardening repo | Main autonomy execution spine |
+| [ARC-Turbo-OS](https://github.com/GareBear99/ARC-Turbo-OS) | Deterministic reuse / jump-to-end runtime theory | Later self-improvement acceleration layer |
+| [Arc-RAR](https://github.com/GareBear99/Arc-RAR) | Cross-platform archive/control package | Machine-write, packaging, and deployment bridge |
+| [Proto-Synth_Grid_Engine](https://github.com/GareBear99/Proto-Synth_Grid_Engine) | Synthetic world/runtime direction | Final Synth/world execution substrate |
+| [Seeded-Universe-Recreation-Engine](https://github.com/GareBear99/Seeded-Universe-Recreation-Engine) | First packaged application/use case | Real-world demonstration of the stack |
+
+### How they fit together
+
+```text
+observe / signal intake
+→ ARC-Core
+→ runtime / directives / memory / validation
+→ arc-lucifer-cleanroom-runtime
+→ later-stage computational reuse / jump-to-end execution
+→ ARC-Turbo-OS
+→ cross-platform package / write / archive bridge
+→ Arc-RAR
+→ synthetic programmable world runtime
+→ Proto-Synth Grid Engine
+→ first packaged end-user application
+→ Seeded Universe Recreation Engine
+```
+
+### Current implementation reality
+
+The stack is being built in pieces.
+The current public runtime most directly testing this direction is:
+
+- **[arc-lucifer-cleanroom-runtime](https://github.com/GareBear99/arc-lucifer-cleanroom-runtime)**
+
+That repo is where the persistent runtime, directives, memory handling, validation, archive behavior, optional adapters, and self-improvement scaffolding are being hardened in practice.
+
+---
+
+## Long-Run Research Goal of the Seeded Universe Direction
+
+The long-run goal of the **Seeded Universe Recreation Engine** is not just to generate worlds visually.
+
+It is to test a deeper hypothesis:
+
+> if enough of the lawful mathematical structure of reality is recreated faithfully enough, then increasingly complex emergent systems — and potentially life-like or intelligent systems — may arise from the simulation itself rather than being manually scripted.
+
+This is not presented as a solved claim.
+It is a research direction.
+
+The theory behind it is:
+
+- reality appears to be governed by consistent rules
+- matter, energy, time, motion, pressure, chemistry, and environmental constraints interact under those rules
+- life in our universe appears to have emerged from lawful conditions rather than being hand-authored
+- therefore, if a synthetic universe reproduces enough of the relevant lawful structure at enough fidelity, emergence of increasingly complex systems may become possible
+
+Under this view, a serious seeded universe would need to model more than visuals.
+It would need to progressively recreate the underlying relationships that make emergence possible, such as:
+
+- causality
+- time
+- energy transfer
+- chemistry-like interaction
+- gravity / pressure / motion
+- environmental stability and instability
+- information persistence
+- selection pressures
+- long-run state evolution
+
+The core research belief is:
+
+> if reality is governed by consistent mathematics, then recreating enough of those mathematics may eventually recreate the conditions from which life can emerge.
+
+Whether that is truly achievable remains open.
+That is part of what the wider ARC / Synth / Seeded Universe ecosystem is intended to explore.
+
+---
+
 ## Build Order
 
 ### Phase 1
@@ -259,25 +351,26 @@ It should **not** be mistaken for AGI by itself.
 - goal table
 - ARC receipt store
 - world-state updates
-- runtime validation spine
 
 ### Phase 2
 - planner
 - tool wrappers
 - evaluation layer
-- receipt-driven memory updates
 
 ### Phase 3
 - learning updates
 - strategic memory
 - branch-aware execution
-- repair / self-improvement scaffolding
 
 ### Phase 4
 - deterministic runtime integration
 - simulation-backed world-model modules
-- optional perception / robotics adapters
 - stronger autonomy controls
+
+### Phase 5
+- optional perception / multimodal adapters
+- synthetic world execution through Synth-style runtimes
+- packaged application proving grounds such as Seeded Universe
 
 ---
 
@@ -300,11 +393,9 @@ without requiring full manual steering at every step.
 
 ## Repository Links
 
-Public repos associated with this direction:
-
-- **arc-lucifer-cleanroom-runtime**: https://github.com/GareBear99/arc-lucifer-cleanroom-runtime
 - **LuciferAI_Local**: https://github.com/GareBear99/LuciferAI_Local
 - **ARC-Core**: https://github.com/GareBear99/ARC-Core
+- **arc-lucifer-cleanroom-runtime**: https://github.com/GareBear99/arc-lucifer-cleanroom-runtime
 - **Proto-Synth Grid Engine**: https://github.com/GareBear99/Proto-Synth_Grid_Engine
 - **Seeded Universe Recreation Engine**: https://github.com/GareBear99/Seeded-Universe-Recreation-Engine
 - **ARC Turbo OS**: https://github.com/GareBear99/ARC-Turbo-OS
@@ -334,6 +425,11 @@ Relevant terms for discoverability:
 - deterministic runtime for agents
 - branch-aware execution
 - local ai operating intelligence
+- synthetic world runtime
+- seeded universe emergence theory
+- life emergence through simulated mathematics
+- virtual simulated physics engine
+- wetware communications grid
 
 ---
 
@@ -343,7 +439,8 @@ Relevant terms for discoverability:
 
 This project documents a persistent, memory-backed, goal-driven intelligence architecture that combines world modeling, planning, action, evaluation, and learning into one operating loop.
 
-**arc-lucifer-cleanroom-runtime** is the main public implementation repo currently being used to test and harden the runtime substrate for this direction.
+It also maps how that architecture connects to the broader ARC / Synth / Seeded Universe ecosystem:
+from deterministic intake and runtime hardening, to synthetic execution substrates, to the long-run hypothesis that sufficiently faithful universal mathematics may eventually permit emergence rather than scripted imitation.
 
 ---
 
