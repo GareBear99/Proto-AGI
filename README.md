@@ -273,6 +273,7 @@ The current implementation path is spread across a staged ecosystem:
 | [arc-lucifer-cleanroom-runtime](https://github.com/GareBear99/arc-lucifer-cleanroom-runtime) | Runtime testbed and hardening repo | Main autonomy execution spine |
 | [ARC-Turbo-OS](https://github.com/GareBear99/ARC-Turbo-OS) | Deterministic reuse / jump-to-end runtime theory | Later self-improvement acceleration layer |
 | [Arc-RAR](https://github.com/GareBear99/Arc-RAR) | Cross-platform archive/control package | Machine-write, packaging, and deployment bridge |
+| [AGI_Photon-Quantum-Computing](https://github.com/GareBear99/AGI_Photon-Quantum-Computing) | Photon / quantum-inspired compute-control research substrate | Future high-speed cognition, hardware orchestration, and single-source-of-truth control layer |
 | [Proto-Synth_Grid_Engine](https://github.com/GareBear99/Proto-Synth_Grid_Engine) | Synthetic world/runtime direction | Final Synth/world execution substrate |
 | [Seeded-Universe-Recreation-Engine](https://github.com/GareBear99/Seeded-Universe-Recreation-Engine) | First packaged application/use case | Real-world demonstration of the stack |
 
@@ -287,6 +288,8 @@ observe / signal intake
 → ARC-Turbo-OS
 → cross-platform package / write / archive bridge
 → Arc-RAR
+→ photon / quantum-inspired compute and hardware-control substrate
+→ AGI_Photon-Quantum-Computing
 → synthetic programmable world runtime
 → Proto-Synth Grid Engine
 → first packaged end-user application
@@ -301,6 +304,30 @@ The current public runtime most directly testing this direction is:
 - **[arc-lucifer-cleanroom-runtime](https://github.com/GareBear99/arc-lucifer-cleanroom-runtime)**
 
 That repo is where the persistent runtime, directives, memory handling, validation, archive behavior, optional adapters, and self-improvement scaffolding are being hardened in practice.
+
+### Where AGI_Photon-Quantum-Computing fits
+
+**AGI_Photon-Quantum-Computing** sits in the stack as a forward research layer for the compute/control side of the system.
+
+Its role is not to replace the proto-AGI loop. Its role is to explore a future substrate where:
+
+- cognition can be accelerated through photon or photon-inspired computation ideas
+- a single source of truth can coordinate multiple devices, lab systems, or external executors
+- hardware control can remain grounded in the same receipt, directive, and state model as the software runtime
+- the wider ARC / Synth ecosystem can eventually extend beyond pure software execution
+
+In practical stack terms:
+
+- **Proto-AGI** defines the operating loop
+- **ARC** defines memory, receipts, and structured state
+- **Lucifer runtime** hardens persistent execution and directives
+- **Turbo OS** explores branch-aware reuse and jump-to-end acceleration
+- **Arc-RAR** handles packaging, writing, archival, and cross-platform control flows
+- **AGI_Photon-Quantum-Computing** explores the future compute/control substrate
+- **Synth** provides the world/runtime execution space
+- **Seeded Universe** becomes the first large-scale proving ground for the full direction
+
+This makes AGI_Photon-Quantum-Computing part of the stack’s **future cognition and orchestration layer**, especially for long-run scenarios involving lab hardware, external machines, or high-speed control systems.
 
 ---
 
@@ -396,10 +423,11 @@ without requiring full manual steering at every step.
 - **LuciferAI_Local**: https://github.com/GareBear99/LuciferAI_Local
 - **ARC-Core**: https://github.com/GareBear99/ARC-Core
 - **arc-lucifer-cleanroom-runtime**: https://github.com/GareBear99/arc-lucifer-cleanroom-runtime
-- **Proto-Synth Grid Engine**: https://github.com/GareBear99/Proto-Synth_Grid_Engine
-- **Seeded Universe Recreation Engine**: https://github.com/GareBear99/Seeded-Universe-Recreation-Engine
 - **ARC Turbo OS**: https://github.com/GareBear99/ARC-Turbo-OS
 - **Arc-RAR**: https://github.com/GareBear99/Arc-RAR
+- **AGI_Photon-Quantum-Computing**: https://github.com/GareBear99/AGI_Photon-Quantum-Computing
+- **Proto-Synth Grid Engine**: https://github.com/GareBear99/Proto-Synth_Grid_Engine
+- **Seeded Universe Recreation Engine**: https://github.com/GareBear99/Seeded-Universe-Recreation-Engine
 
 ---
 
@@ -424,6 +452,8 @@ Relevant terms for discoverability:
 - planner + tool use architecture
 - deterministic runtime for agents
 - branch-aware execution
+- photon quantum computing for agi
+- quantum-inspired ai control architecture
 - local ai operating intelligence
 - synthetic world runtime
 - seeded universe emergence theory
